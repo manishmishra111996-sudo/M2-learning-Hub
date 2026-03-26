@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M² Learning Hub | Science & Maths Tuition</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:  #080808;
+  --dark:   #0E0E0E;
+  --card:   #111111;
+  --gold:   #F5A200;
+  --gold2:  #FFB829;
+  --goldlt: rgba(245,162,0,0.10);
+  --teal:   #1B3B35;
+  --tealbr: #3D7A6A;
+  --white:  #FFFFFF;
+  --off:    #E8E8E8;
+  --muted:  #555555;
+  --mid:    #888888;
+  --border: rgba(255,255,255,0.07);
+  --bordg:  rgba(245,162,0,0.18);
+  --whatsapp: #25D366;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+.container{max-width:1180px;margin:0 auto;padding:0 28px}
+.gold{color:var(--gold)}
+.section{padding:96px 0}
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:var(--goldlt);border:1px solid var(--bordg);border-radius:4px;padding:5px 14px}
+.pill::before{content:'▸';font-size:9px}
+.stag{text-align:center;margin-bottom:56px}
+.stag .pill{margin-bottom:18px}
+.stag h2{font-family:'Outfit',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.stag p{color:var(--mid);font-size:16px;margin-top:14px;max-width:540px;margin-left:auto;margin-right:auto}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#000;font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:8px;border:none;cursor:pointer;transition:all .25s}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(245,162,0,.35)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--white);font-family:'Outfit',sans-serif;font-weight:600;font-size:14px;padding:12px 24px;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:all .25s}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes pulseW{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.4)}70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:20px 0;backdrop-filter:blur(24px);background:rgba(8,8,8,.85);border-bottom:1px solid var(--border);transition:all .3s}
+nav.scrolled{padding:13px 0;background:rgba(8,8,8,.97)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-box{width:38px;height:38px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-family:'Outfit',sans-serif;font-size:15px;font-weight:900;color:#000}
+.logo-name{font-family:'Outfit',sans-serif;font-size:18px;font-weight:800}
+.nav-links{list-style:none;display:flex;gap:34px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--mid);transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.hamburger span{width:22px;height:2px;background:white;border-radius:2px;transition:.3s}
+
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:30px;right:30px;z-index:1000;display:flex;align-items:center;gap:12px;cursor:pointer}
+.wa-icon{width:60px;height:60px;background:var(--whatsapp);border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 25px rgba(37,211,102,0.3);animation:pulseW 2s infinite}
+.wa-icon svg{width:32px;height:32px;fill:white}
+.wa-text{background:white;color:#333;padding:8px 16px;border-radius:12px;font-size:13px;font-weight:700;box-shadow:0 4px 15px rgba(0,0,0,0.2);opacity:0;transform:translateX(20px);transition:all .3s;pointer-events:none}
+.whatsapp-float:hover .wa-text{opacity:1;transform:translateX(0)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:130px 0 80px;background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(245,162,0,0.05) 0%,transparent 60%)}
+.hero-h1{font-family:'Outfit',sans-serif;font-size:clamp(44px,6vw,72px);font-weight:900;line-height:1;margin-bottom:26px}
+.hero-sub{font-size:17px;color:var(--mid);margin-bottom:28px;max-width:500px;line-height:1.75}
+.hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.hero-chip{font-size:13px;padding:6px 14px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--off)}
+
+/* FORM */
+.form-card{background:var(--card);border:1px solid var(--bordg);border-radius:20px;padding:34px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(245,162,0,0.08)}
+.form-card h3{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;margin-bottom:5px}
+.form-subtitle{font-size:13px;color:var(--mid);margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:7px}
+.form-group input,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:white;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:.2s;-webkit-appearance:none}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold);background:rgba(245,162,0,0.04)}
+.form-group select option{background:#1a1a1a;color:white}
+.form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+
+/* FEATURES */
+.feat-section{background:var(--dark);padding:96px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.feat-grid .ffull{grid-column:1/-1}
+.fcard{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 32px;display:flex;gap:24px;align-items:flex-start;transition:all .3s;position:relative;overflow:hidden}
+.fcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);opacity:0;transition:opacity .3s;border-radius:3px 0 0 3px}
+.fcard:hover{border-color:var(--bordg);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.fcard:hover::before{opacity:1}
+.fnbadge{width:52px;height:52px;border-radius:12px;flex-shrink:0;display:grid;place-items:center;background:var(--goldlt);border:1px solid var(--bordg);font-family:'Outfit',sans-serif;font-size:18px;font-weight:900;color:var(--gold)}
+.feat-title{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+.feat-desc{font-size:16px;color:var(--mid);line-height:1.75;margin-bottom:18px}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.feat-list li{font-size:15px;color:#AAAAAA;display:flex;gap:10px;align-items:flex-start;line-height:1.55}
+.feat-list li::before{content:'→';color:var(--gold);flex-shrink:0;font-size:13px;margin-top:2px}
+.fcard.ffull{background:linear-gradient(135deg,#1B3B35 0%,#0E2420 100%);border-color:rgba(61,122,106,.3)}
+.fcard.ffull:hover{border-color:rgba(61,122,106,.6)}
+.fcard.ffull .feat-title{color:#7FFFD4}
+.fcard.ffull .fnbadge{background:rgba(0,201,167,.1);border-color:rgba(61,122,106,.4);color:#7FFFD4}
+.p5-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.p5-item{background:rgba(0,0,0,.2);border-radius:12px;padding:18px 20px}
+.p5-icon{font-size:22px;margin-bottom:8px}
+.p5-item-title{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;margin-bottom:6px;color:#7FFFD4}
+.p5-item-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.55}
+
+/* FACULTY */
+.fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:800px;margin:0 auto}
+.fcrd{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;text-align:center;padding:34px;transition:all .35s}
+.fcrd:hover{transform:translateY(-5px);border-color:var(--bordg);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.fav-img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;border:3px solid var(--bordg)}
+.fname{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;margin-bottom:4px}
+.frole{color:var(--gold);font-size:14px;font-weight:600;margin-bottom:10px}
+.fmeta-txt{font-size:14px;color:var(--mid);margin-bottom:14px}
+.ftgs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.ftg{font-size:12px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--off)}
+
+/* FOOTER */
+footer{padding:44px 0;border-top:1px solid var(--border);text-align:center;font-size:13px;color:var(--mid)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .nav-links{display:none;flex-direction:column;position:fixed;top:0;right:0;height:100vh;width:280px;background:var(--dark);padding:100px 40px;gap:25px;border-left:1px solid var(--border);box-shadow:-10px 0 30px rgba(0,0,0,0.5)}
+  .nav-links.active{display:flex}
+  .hamburger{display:flex}
+  .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.active span:nth-child(2){opacity:0}
+  .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .hero-inner-wrap{flex-direction:column}
+  .form-card{max-width:100%}
+}
+@media(max-width:768px){
+  .fgrid{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr}
+  .feat-grid .ffull{grid-column:auto}
+  .p5-grid{grid-template-columns:1fr}
+  .fcard{padding:26px 22px;gap:16px}
+  .feat-title{font-size:18px}
+  .feat-desc{font-size:14px}
+  .feat-list li{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/918882565496?text=Hi%20M2%20Learning%20Hub,%20I'd%20like%20to%20enquire%20about%20a%20free%20demo%20class." class="whatsapp-float" target="_blank">
+  <div class="wa-text">Chat with us</div>
+  <div class="wa-icon">
+    <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.767 5.77 0 1.026.275 2.057.815 2.959L6.211 18l3.22-.843c.837.458 1.745.696 2.6.696 3.178 0 5.764-2.586 5.764-5.77s-2.586-5.711-5.764-5.711zm3.392 8.244c-.146.413-.73.743-1.2.806-.324.041-.747.074-1.98-.445-1.577-.662-2.586-2.264-2.664-2.373-.078-.11-.643-.854-.643-1.628 0-.773.403-1.155.547-1.312.145-.157.314-.197.419-.197.105 0 .209.002.301.006.096.004.225-.035.352.27.128.307.437 1.066.475 1.143.038.077.063.167.012.269-.051.103-.077.167-.154.257-.077.09-.161.201-.23.269-.077.077-.157.161-.067.314.09.154.401.662.86 1.07.59.524 1.087.687 1.241.764.154.077.243.064.333-.038.09-.103.385-.449.488-.603.103-.154.205-.128.346-.077.141.051.898.423 1.052.499.154.077.256.115.295.18.038.064.038.372-.109.785z"/></svg>
+  </div>
+</a>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-box">M²</div>
+        <div class="logo-name">M<sup>2</sup> Learning Hub</div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faculty">Faculty</a></li>
+        <li><a href="#enroll">Enrol Now</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO + FORM -->
+<section class="hero" id="enroll">
+  <div class="container">
+    <div class="hero-inner-wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:50px">
+
+      <div class="reveal" style="flex:1;min-width:280px">
+        <div class="pill" style="margin-bottom:20px">Premium Online Learning</div>
+        <h1 class="hero-h1">Master Science &amp;<br><span class="gold">Mathematics.</span></h1>
+        <p class="hero-sub">Expert-led live classes designed for CBSE, ICSE, IIT JEE and NEET aspirants. Focus on concepts, not just formulas.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px">
+          <a href="#enroll" class="btn-gold">Start Your Journey &nbsp;→</a>
+          <a href="tel:8882565496" class="btn-ghost">📞 Call Us Now</a>
+        </div>
+        <div class="hero-chips">
+          <span class="hero-chip">CBSE</span>
+          <span class="hero-chip">ICSE</span>
+          <span class="hero-chip">IIT JEE</span>
+          <span class="hero-chip">NEET</span>
+          <span class="hero-chip">Class 6–12</span>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <h3>📚 Book a Free Demo Class</h3>
+        <p class="form-subtitle">No payment needed · Limited seats available</p>
+        <form action="#">
+          <div class="form-group">
+            <label>Student Name</label>
+            <input type="text" placeholder="Enter full name" required>
+          </div>
+          <div class="form-group">
+            <label>Class / Grade</label>
+            <select required>
+              <option value="">Select Class</option>
+              <option>Class 6</option>
+              <option>Class 7</option>
+              <option>Class 8</option>
+              <option>Class 9</option>
+              <option>Class 10</option>
+              <option>Class 11 (Science)</option>
+              <option>Class 12 (Science)</option>
+              <option>IIT JEE Dropper</option>
+              <option>NEET Dropper</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Board</label>
+            <select required>
+              <option value="">Select Board</option>
+              <option>CBSE</option>
+              <option>ICSE</option>
+              <option>State Board</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+          <button type="submit" class="btn-gold" style="width:100%;margin-top:6px;font-size:15px;padding:14px">Reserve My Free Slot &nbsp;→</button>
+        </form>
+        <p class="form-note">📞 Or call us: <a href="tel:+918882565496" style="color:var(--gold);font-weight:600">+91 8882565496</a></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES — 5 PILLARS -->
+<section class="feat-section" id="features">
+  <div class="container">
+    <div class="stag reveal">
+      <div class="pill">What We Offer</div>
+      <h2>5 Pillars of <span class="gold">M² Learning</span></h2>
+      <p>A complete ecosystem — live classes, daily practice, exam prep, doubt clearing &amp; parent involvement.</p>
+    </div>
+
+    <div class="feat-grid">
+
+      <div class="fcard reveal">
+        <div class="fnbadge">01</div>
+        <div>
+          <div class="feat-title">Live 1-on-1 &amp; Interactive Classes</div>
+          <div class="feat-desc">Customised, scheduled live sessions — just you and the teacher. Full attention, zero distractions, maximum learning.</div>
+          <ul class="feat-list">
+            <li>Customised schedule &amp; pace for every student</li>
+            <li>Live digital whiteboard with interactive sessions</li>
+            <li>Available for Class 6–8, 9–10, 11–12, NEET &amp; JEE</li>
+            <li>All sessions recorded for unlimited replay</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fnbadge">02</div>
+        <div>
+          <div class="feat-title">Daily Practice &amp; Crisp Short Notes</div>
+          <div class="feat-desc">Structured daily practice keeps concepts sharp. Concise, revision-ready notes after every chapter — no wasted time.</div>
+          <ul class="feat-list">
+            <li>Daily Practice Questions (DPQs) for every subject</li>
+            <li>Concise short notes for quick, effective revision</li>
+            <li>Reinforce learning consistently, every single day</li>
+            <li>Chapter-wise PYQs &amp; topic-wise mock tests</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fnbadge">03</div>
+        <div>
+          <div class="feat-title">School Exam Focused Prep</div>
+          <div class="feat-desc">We align teaching with your school's curriculum so students score high in school exams AND build a competitive foundation.</div>
+          <ul class="feat-list">
+            <li>Special attention &amp; support during exam season</li>
+            <li>Extra focus on weak concepts before school tests</li>
+            <li>Fully aligned with school syllabus &amp; board pattern</li>
+            <li>On-request pre-exam doubt sessions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fnbadge">04</div>
+        <div>
+          <div class="feat-title">Complete Doubt Resolution</div>
+          <div class="feat-desc">No doubt goes unanswered. Dedicated LIVE doubt-clearing classes after every chapter ensure complete conceptual clarity.</div>
+          <ul class="feat-list">
+            <li>LIVE doubt-clearing after completion of every chapter</li>
+            <li>Chat with teachers anytime for instant answers</li>
+            <li>Zero conceptual gaps — we ensure it</li>
+            <li>Doubt session recordings available for reference</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fcard ffull reveal">
+        <div class="fnbadge">05</div>
+        <div style="width:100%">
+          <div class="feat-title">Active Parent Engagement</div>
+          <div class="feat-desc" style="color:rgba(255,255,255,.6)">Parents are partners in success — not just spectators. We keep them informed, involved &amp; empowered at every step of the journey.</div>
+          <div class="p5-grid">
+            <div class="p5-item">
+              <div class="p5-icon">📊</div>
+              <div class="p5-item-title">Fortnightly Reports</div>
+              <div class="p5-item-desc">Detailed chapter-wise performance reports shared every two weeks</div>
+            </div>
+            <div class="p5-item">
+              <div class="p5-icon">📞</div>
+              <div class="p5-item-title">Monthly PTMs</div>
+              <div class="p5-item-desc">Parent-Teacher Meetings every month to review &amp; plan ahead</div>
+            </div>
+            <div class="p5-item">
+              <div class="p5-icon">🎓</div>
+              <div class="p5-item-title">Parenting Workshops</div>
+              <div class="p5-item-desc">Expert-led workshops to help parents support their child's learning journey</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section class="section" id="faculty" style="background:var(--dark)">
+  <div class="container">
+    <div class="stag reveal">
+      <div class="pill">Meet the Experts</div>
+      <h2>Expert Faculty from <span class="gold">Renowned Organizations</span></h2>
+      <p>Ex-Aakash educators with 10+ years of transforming students' results.</p>
+    </div>
+    <div class="fgrid">
+      <div class="fcrd reveal">
+        <img src="manish-mishra.jpg" alt="Manish Mishra" class="fav-img" onerror="this.src='https://ui-avatars.com/api/?name=Manish+Mishra&background=F5A200&color=000&size=120'">
+        <div class="fname">Manish Mishra</div>
+        <div class="frole">Mathematics Expert</div>
+        <p class="fmeta-txt">🎓 Ex-Aakash Institute · 10+ yrs</p>
+        <div class="ftgs">
+          <span class="ftg">JEE Maths</span><span class="ftg">Class 9–12</span><span class="ftg">CBSE</span><span class="ftg">ICSE</span>
+        </div>
+      </div>
+      <div class="fcrd reveal">
+        <img src="madhvi-rai.jpg" alt="Madhvi Rai" class="fav-img" onerror="this.src='https://ui-avatars.com/api/?name=Madhvi+Rai&background=3D7A6A&color=fff&size=120'">
+        <div class="fname">Madhvi Rai</div>
+        <div class="frole">Science Specialist</div>
+        <p class="fmeta-txt">🎓 Ex-Aakash Institute · 11+ yrs</p>
+        <div class="ftgs">
+          <span class="ftg">NEET Chemistry</span><span class="ftg">Science 9–12</span><span class="ftg">CBSE</span><span class="ftg">ICSE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:60px 0 40px;border-top:1px solid var(--border);text-align:center">
+  <div class="container">
+    <div style="margin-bottom:18px">
+      <span class="logo-name" style="font-size:26px">M<sup>2</sup> Learning Hub</span>
+    </div>
+    <p style="font-size:14px;color:var(--mid);max-width:560px;margin:0 auto 20px;line-height:1.75">Empowering students through logic, clarity, and personalised attention. Join the community of successful learners today.</p>
+    <p style="margin-bottom:28px">📞 <a href="tel:+918882565496" style="color:var(--gold);font-weight:600">+91 8882565496</a> &nbsp;|&nbsp; <a href="tel:+918107563723" style="color:var(--gold);font-weight:600">+91 8107563723</a></p>
+    <div style="border-top:1px solid var(--border);padding-top:22px;font-size:12px;color:var(--muted)">
+      © 2025 <span class="gold">M² Learning Hub</span>. All rights reserved. | Built for Excellence.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  // Toggle mobile menu
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  // Close menu when a nav link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Reveal animations — unobserve after firing for better performance
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
