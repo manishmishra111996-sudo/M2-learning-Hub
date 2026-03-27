@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NEET Preparation | M² Learning Hub</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--black:#080808;--dark:#0E0E0E;--card:#111111;--gold:#F5A200;--gold2:#FFB829;--goldlt:rgba(245,162,0,0.10);--teal:#1B3B35;--tealbr:#3D7A6A;--white:#FFFFFF;--off:#E8E8E8;--muted:#555555;--mid:#888888;--border:rgba(255,255,255,0.07);--bordg:rgba(245,162,0,0.18)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+.container{max-width:1100px;margin:0 auto;padding:0 28px}
+.gold{color:var(--gold)}
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:var(--goldlt);border:1px solid var(--bordg);border-radius:4px;padding:5px 14px}
+.pill::before{content:'▸';font-size:9px}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#000;font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;transition:all .25s}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(245,162,0,.35)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;backdrop-filter:blur(24px);background:rgba(8,8,8,.9);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-box{width:36px;height:36px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-family:'Outfit',sans-serif;font-size:14px;font-weight:900;color:#000}
+.logo-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:800}
+.back-btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--mid);border:1px solid var(--border);padding:7px 16px;border-radius:8px;transition:all .2s}
+.back-btn:hover{color:white;border-color:rgba(255,255,255,.2)}
+/* NEET hero – teal accent */
+.page-hero{padding:120px 0 70px;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(29,90,77,0.15) 0%,transparent 65%);border-bottom:1px solid var(--border)}
+.page-hero h1{font-family:'Outfit',sans-serif;font-size:clamp(36px,5vw,62px);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+.page-hero p{font-size:17px;color:var(--mid);max-width:560px;line-height:1.75;margin-bottom:28px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.tag{font-size:12px;padding:5px 14px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--off)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.stat-box:hover{border-color:var(--bordg)}
+.stat-num{font-family:'Outfit',sans-serif;font-size:28px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:4px}
+.stat-lbl{font-size:12px;color:var(--mid)}
+.section{padding:80px 0}
+.sec-title{font-family:'Outfit',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.sec-sub{font-size:15px;color:var(--mid);margin-bottom:36px}
+.subj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.subj-card{border-radius:16px;padding:26px;border:1px solid var(--border);background:var(--card);transition:all .3s}
+.subj-card:hover{transform:translateY(-3px);border-color:var(--bordg)}
+.subj-icon{font-size:32px;margin-bottom:12px}
+.subj-name{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px}
+.subj-label{font-size:12px;color:var(--gold);font-weight:600;margin-bottom:14px;font-family:'JetBrains Mono',monospace;letter-spacing:.08em}
+.subj-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.subj-list li{font-size:13px;color:#999;display:flex;gap:8px}
+.subj-list li::before{content:'→';color:var(--gold);flex-shrink:0;font-size:11px}
+.fac-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px}
+.fac-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;display:flex;gap:18px;align-items:flex-start;transition:all .3s}
+.fac-card:hover{border-color:var(--bordg);transform:translateY(-3px)}
+.fac-av{width:72px;height:72px;border-radius:50%;flex-shrink:0;object-fit:cover;border:2px solid var(--bordg)}
+.fac-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:800;margin-bottom:2px}
+.fac-role{color:var(--gold);font-size:13px;font-weight:600;margin-bottom:6px}
+.fac-meta{font-size:12px;color:var(--mid);margin-bottom:8px}
+.fac-tags{display:flex;flex-wrap:wrap;gap:5px}
+.fac-tag{font-size:11px;padding:3px 10px;border-radius:5px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--off)}
+.feat-list-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.feat-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;transition:border-color .3s}
+.feat-item:hover{border-color:var(--bordg)}
+.feat-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.feat-item-title{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px}
+.feat-item-desc{font-size:13px;color:var(--mid);line-height:1.6}
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.roadmap::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--tealbr),transparent);opacity:.3}
+.rm-step{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:center;position:relative;z-index:1;transition:all .3s}
+.rm-step:hover{border-color:rgba(61,122,106,.5);transform:translateY(-3px)}
+.rm-num{width:48px;height:48px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;background:rgba(61,122,106,.12);border:1.5px solid rgba(61,122,106,.4);font-family:'Outfit',sans-serif;font-size:17px;font-weight:900;color:#7FFFD4}
+.rm-title{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;margin-bottom:6px}
+.rm-desc{font-size:12px;color:var(--mid);line-height:1.6}
+.cta-strip{background:linear-gradient(135deg,#1B3B35,#0E2420);border:1px solid rgba(61,122,106,.3);border-radius:20px;padding:50px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.cta-strip h2{font-family:'Outfit',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:900;margin-bottom:8px}
+.cta-strip p{color:rgba(255,255,255,.55);font-size:15px}
+footer{padding:36px 0;border-top:1px solid var(--border);text-align:center;font-size:13px;color:var(--mid)}
+.courses-row{display:flex;flex-wrap:wrap;gap:12px}
+.course-chip{padding:9px 20px;border-radius:10px;background:var(--card);border:1px solid var(--border);font-size:13px;font-weight:600;color:var(--off);transition:all .25s}
+.course-chip:hover{background:var(--goldlt);border-color:var(--bordg);color:var(--gold)}
+.course-chip.active{background:rgba(61,122,106,.15);border-color:rgba(61,122,106,.4);color:#7FFFD4}
+@media(max-width:768px){.stats-row{grid-template-columns:1fr 1fr}.subj-grid{grid-template-columns:1fr}.fac-grid{grid-template-columns:1fr}.feat-list-grid{grid-template-columns:1fr}.roadmap{grid-template-columns:1fr 1fr}.cta-strip{flex-direction:column;padding:32px 24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><div class="logo-box">M²</div><div class="logo-name">M<sup>2</sup> Learning Hub</div></a>
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="pill" style="margin-bottom:18px">NEET Programme</div>
+      <h1>Clear NEET with<br><span style="color:#7FFFD4">Confidence &amp; Clarity</span></h1>
+      <p>Focused Biology, Chemistry &amp; Physics preparation for NEET aspirants. Concept-based teaching, chapter-wise tests and dedicated doubt sessions to help you secure a top rank.</p>
+      <div class="tag-row">
+        <span class="tag">NEET UG</span><span class="tag">Biology · Chemistry · Physics</span><span class="tag">Class 11–12</span><span class="tag">Dropper Batch</span><span class="tag">Ex-Aakash Faculty</span>
+      </div>
+      <a href="index.html#enroll" class="btn-gold">Book Free Demo →</a>
+    </div>
+    <div class="stats-row reveal">
+      <div class="stat-box"><div class="stat-num">250+</div><div class="stat-lbl">NEET Students</div></div>
+      <div class="stat-box"><div class="stat-num">90%</div><div class="stat-lbl">Qualify NEET</div></div>
+      <div class="stat-box"><div class="stat-num">11+</div><div class="stat-lbl">Years NEET Exp.</div></div>
+      <div class="stat-box"><div class="stat-num">4.9★</div><div class="stat-lbl">Student Rating</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBJECTS -->
+<section class="section" style="background:var(--dark)">
+  <div class="container">
+    <div class="reveal"><div class="sec-title">🧬 NEET Subjects — Complete Coverage</div><div class="sec-sub">All three subjects taught as per NMC NEET syllabus</div></div>
+    <div class="subj-grid reveal">
+      <div class="subj-card">
+        <div class="subj-icon">🧬</div>
+        <div class="subj-name">Biology</div>
+        <div class="subj-label">720 marks weightage</div>
+        <ul class="subj-list">
+          <li>Cell Biology — Structure, Division, Respiration</li>
+          <li>Plant Physiology — Photosynthesis, Transport</li>
+          <li>Human Physiology — All systems in detail</li>
+          <li>Genetics &amp; Evolution</li>
+          <li>Ecology &amp; Environment</li>
+          <li>Biotechnology &amp; Reproduction</li>
+        </ul>
+      </div>
+      <div class="subj-card">
+        <div class="subj-icon">🧪</div>
+        <div class="subj-name">Chemistry</div>
+        <div class="subj-label">180 marks weightage</div>
+        <ul class="subj-list">
+          <li>Physical — Thermodynamics, Equilibrium, Electrochemistry</li>
+          <li>Inorganic — p-block, d-block, Coordination</li>
+          <li>Organic — Biomolecules, Reactions, Polymers</li>
+          <li>Solutions, Surface Chemistry</li>
+          <li>NEET-specific MCQ strategies</li>
+          <li>Quick revision formula sheets</li>
+        </ul>
+      </div>
+      <div class="subj-card">
+        <div class="subj-icon">⚡</div>
+        <div class="subj-name">Physics</div>
+        <div class="subj-label">180 marks weightage</div>
+        <ul class="subj-list">
+          <li>Mechanics — Motion, Laws, Work, Rotation</li>
+          <li>Thermodynamics &amp; Waves</li>
+          <li>Optics — Ray &amp; Wave</li>
+          <li>Electrostatics &amp; Magnetism</li>
+          <li>Modern Physics — Atoms, Nuclei, Radiation</li>
+          <li>NEET Physics shortcut techniques</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="section">
+  <div class="container">
+    <div class="reveal"><div class="sec-title">🗺️ NEET Preparation Roadmap</div><div class="sec-sub">A proven plan from start to exam hall</div></div>
+    <div class="roadmap reveal">
+      <div class="rm-step"><div class="rm-num">01</div><div class="rm-title">NCERT Mastery</div><div class="rm-desc">Strong NCERT base — every line of Biology matters in NEET</div></div>
+      <div class="rm-step"><div class="rm-num">02</div><div class="rm-title">Topic-wise Tests</div><div class="rm-desc">Chapter MCQs aligned to NEET difficulty &amp; trap questions</div></div>
+      <div class="rm-step"><div class="rm-num">03</div><div class="rm-title">Full Mock Tests</div><div class="rm-desc">720-mark NEET full mocks with detailed performance analysis</div></div>
+      <div class="rm-step"><div class="rm-num">04</div><div class="rm-title">Rapid Revision</div><div class="rm-desc">Mnemonics, mind maps, PYQs &amp; last-minute biology sprint</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section class="section" style="background:var(--dark)">
+  <div class="container">
+    <div class="reveal"><div class="sec-title">👨‍🏫 NEET Faculty</div><div class="sec-sub">Expert guidance from Ex-Aakash educators who have mentored hundreds of NEET qualifiers</div></div>
+    <div class="fac-grid reveal">
+      <div class="fac-card">
+        <img src="madhvi-rai.jpg" alt="Madhvi Rai" class="fac-av" onerror="this.src='https://ui-avatars.com/api/?name=Madhvi+Rai&background=3D7A6A&color=fff&size=80'">
+        <div><div class="fac-name">Madhvi Rai</div><div class="fac-role">NEET Biology &amp; Chemistry</div><div class="fac-meta">🎓 Ex-Aakash Institute · 11+ yrs</div><div class="fac-tags"><span class="fac-tag">NEET Biology</span><span class="fac-tag">NEET Chemistry</span><span class="fac-tag">Science 9–12</span></div></div>
+      </div>
+      <div class="fac-card">
+        <img src="manish-mishra.jpg" alt="Manish Mishra" class="fac-av" onerror="this.src='https://ui-avatars.com/api/?name=Manish+Mishra&background=F5A200&color=000&size=80'">
+        <div><div class="fac-name">Manish Mishra</div><div class="fac-role">NEET Physics Support</div><div class="fac-meta">🎓 Ex-Aakash Institute · 10+ yrs</div><div class="fac-tags"><span class="fac-tag">NEET Physics</span><span class="fac-tag">Class 11–12</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal"><div class="sec-title">✅ NEET Programme Features</div><div class="sec-sub">Everything built around clearing NEET in one attempt</div></div>
+    <div class="feat-list-grid reveal">
+      <div class="feat-item"><div class="feat-icon">🔴</div><div><div class="feat-item-title">Live 1-on-1 Classes</div><div class="feat-item-desc">Full Biology, Chemistry &amp; Physics in personalised sessions</div></div></div>
+      <div class="feat-item"><div class="feat-icon">📋</div><div><div class="feat-item-title">NCERT Line-by-Line Coverage</div><div class="feat-item-desc">Biology NCERT is the Bible for NEET — we cover every line</div></div></div>
+      <div class="feat-item"><div class="feat-icon">🧠</div><div><div class="feat-item-title">Mnemonics &amp; Memory Tricks</div><div class="feat-item-desc">Easy tricks to memorise complex biology topics &amp; reactions</div></div></div>
+      <div class="feat-item"><div class="feat-icon">📊</div><div><div class="feat-item-title">720-Mark Mock Tests</div><div class="feat-item-desc">Full NEET UG pattern mocks with time &amp; accuracy analysis</div></div></div>
+      <div class="feat-item"><div class="feat-icon">❓</div><div><div class="feat-item-title">Unlimited Doubt Sessions</div><div class="feat-item-desc">Chapter-wise doubt clearing — chat with teacher any time</div></div></div>
+      <div class="feat-item"><div class="feat-icon">📞</div><div><div class="feat-item-title">Parent Progress Reports</div><div class="feat-item-desc">Fortnightly reports + monthly PTMs to track NEET readiness</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--dark)">
+  <div class="container reveal">
+    <div class="sec-title">🔗 Explore Other Programmes</div>
+    <div class="sec-sub" style="margin-bottom:20px">All courses at M² Learning Hub</div>
+    <div class="courses-row">
+      <a href="cbse.html" class="course-chip">CBSE</a>
+      <a href="icse.html" class="course-chip">ICSE</a>
+      <a href="jee.html" class="course-chip">IIT JEE</a>
+      <span class="course-chip active">NEET</span>
+      <a href="foundation.html" class="course-chip">Class 6–12 Foundation</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 80px">
+  <div class="container">
+    <div class="cta-strip reveal">
+      <div><h2>Your NEET dream is <span style="color:#7FFFD4">achievable.</span></h2><p>Book a FREE demo class — meet Madhvi ma'am &amp; experience our teaching.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+        <a href="index.html#enroll" class="btn-gold" style="font-size:15px;padding:14px 30px">Book Free Demo →</a>
+        <span style="font-size:13px;color:rgba(255,255,255,.4)">📞 <a href="tel:+918107563723" style="color:var(--gold);font-weight:600">+91 8107563723</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container"><p>© 2025 <span class="gold">M² Learning Hub</span>. All rights reserved.</p></div></footer>
+<script>
+  const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

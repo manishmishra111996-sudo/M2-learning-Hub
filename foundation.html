@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Class 6–12 Foundation | M² Learning Hub</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--black:#080808;--dark:#0E0E0E;--card:#111111;--gold:#F5A200;--gold2:#FFB829;--goldlt:rgba(245,162,0,0.10);--white:#FFFFFF;--off:#E8E8E8;--muted:#555555;--mid:#888888;--border:rgba(255,255,255,0.07);--bordg:rgba(245,162,0,0.18)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+.container{max-width:1100px;margin:0 auto;padding:0 28px}
+.gold{color:var(--gold)}
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:var(--goldlt);border:1px solid var(--bordg);border-radius:4px;padding:5px 14px}
+.pill::before{content:'▸';font-size:9px}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#000;font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;transition:all .25s}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(245,162,0,.35)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:16px 0;backdrop-filter:blur(24px);background:rgba(8,8,8,.9);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-box{width:36px;height:36px;border-radius:8px;background:var(--gold);display:grid;place-items:center;font-family:'Outfit',sans-serif;font-size:14px;font-weight:900;color:#000}
+.logo-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:800}
+.back-btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--mid);border:1px solid var(--border);padding:7px 16px;border-radius:8px;transition:all .2s}
+.back-btn:hover{color:white;border-color:rgba(255,255,255,.2)}
+.page-hero{padding:120px 0 70px;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(245,162,0,0.07) 0%,transparent 65%);border-bottom:1px solid var(--border)}
+.page-hero h1{font-family:'Outfit',sans-serif;font-size:clamp(36px,5vw,62px);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+.page-hero p{font-size:17px;color:var(--mid);max-width:560px;line-height:1.75;margin-bottom:28px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.tag{font-size:12px;padding:5px 14px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--off)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.stat-box:hover{border-color:var(--bordg)}
+.stat-num{font-family:'Outfit',sans-serif;font-size:28px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:4px}
+.stat-lbl{font-size:12px;color:var(--mid)}
+.section{padding:80px 0}
+.sec-title{font-family:'Outfit',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.sec-sub{font-size:15px;color:var(--mid);margin-bottom:36px}
+/* Class timeline */
+.class-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.class-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;transition:all .3s;position:relative;overflow:hidden}
+.class-card:hover{border-color:var(--bordg);transform:translateY(-3px)}
+.class-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);border-radius:3px 0 0 3px}
+.class-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:var(--goldlt);border:1px solid var(--bordg);padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:12px}
+.class-name{font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;margin-bottom:6px}
+.class-desc{font-size:13px;color:var(--mid);margin-bottom:14px;line-height:1.6}
+.class-subj{display:flex;flex-wrap:wrap;gap:6px}
+.cs{font-size:11px;padding:3px 10px;border-radius:5px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--off)}
+/* Subject breakdown */
+.subj-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.subj-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;transition:all .3s}
+.subj-box:hover{border-color:var(--bordg)}
+.subj-icon{font-size:28px;margin-bottom:10px}
+.subj-title{font-family:'Outfit',sans-serif;font-size:17px;font-weight:800;margin-bottom:10px}
+.subj-topics{list-style:none;display:flex;flex-direction:column;gap:6px}
+.subj-topics li{font-size:13px;color:#999;display:flex;gap:8px}
+.subj-topics li::before{content:'→';color:var(--gold);font-size:11px;flex-shrink:0}
+.fac-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px}
+.fac-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;display:flex;gap:18px;align-items:flex-start;transition:all .3s}
+.fac-card:hover{border-color:var(--bordg);transform:translateY(-3px)}
+.fac-av{width:72px;height:72px;border-radius:50%;flex-shrink:0;object-fit:cover;border:2px solid var(--bordg)}
+.fac-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:800;margin-bottom:2px}
+.fac-role{color:var(--gold);font-size:13px;font-weight:600;margin-bottom:6px}
+.fac-meta{font-size:12px;color:var(--mid);margin-bottom:8px}
+.fac-tags{display:flex;flex-wrap:wrap;gap:5px}
+.fac-tag{font-size:11px;padding:3px 10px;border-radius:5px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--off)}
+.feat-list-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.feat-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;transition:border-color .3s}
+.feat-item:hover{border-color:var(--bordg)}
+.feat-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.feat-item-title{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px}
+.feat-item-desc{font-size:13px;color:var(--mid);line-height:1.6}
+.cta-strip{background:linear-gradient(135deg,#1A1200,#2A1F00);border:1px solid rgba(245,162,0,.2);border-radius:20px;padding:50px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.cta-strip h2{font-family:'Outfit',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:900;margin-bottom:8px}
+.cta-strip p{color:rgba(255,255,255,.55);font-size:15px}
+footer{padding:36px 0;border-top:1px solid var(--border);text-align:center;font-size:13px;color:var(--mid)}
+.courses-row{display:flex;flex-wrap:wrap;gap:12px}
+.course-chip{padding:9px 20px;border-radius:10px;background:var(--card);border:1px solid var(--border);font-size:13px;font-weight:600;color:var(--off);transition:all .25s}
+.course-chip:hover{background:var(--goldlt);border-color:var(--bordg);color:var(--gold)}
+.course-chip.active{background:var(--goldlt);border-color:var(--bordg);color:var(--gold)}
+@media(max-width:768px){.stats-row{grid-template-columns:1fr 1fr}.class-timeline{grid-template-columns:1fr}.subj-row{grid-template-columns:1fr}.fac-grid{grid-template-columns:1fr}.feat-list-grid{grid-template-columns:1fr}.cta-strip{flex-direction:column;padding:32px 24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><div class="logo-box">M²</div><div class="logo-name">M<sup>2</sup> Learning Hub</div></a>
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="pill" style="margin-bottom:18px">Class 6 – 12 Foundation</div>
+      <h1>Build a Strong Base<br><span class="gold">From Class 6 Onwards</span></h1>
+      <p>From the very first concepts in Class 6 to board exam mastery in Class 12 — we build students step by step, class by class, with patience and clarity.</p>
+      <div class="tag-row">
+        <span class="tag">Class 6 · 7 · 8</span><span class="tag">Class 9 · 10</span><span class="tag">Class 11 · 12</span><span class="tag">CBSE &amp; ICSE</span><span class="tag">Science &amp; Maths</span>
+      </div>
+      <a href="index.html#enroll" class="btn-gold">Book Free Demo →</a>
+    </div>
+    <div class="stats-row reveal">
+      <div class="stat-box"><div class="stat-num">600+</div><div class="stat-lbl">Students Enrolled</div></div>
+      <div class="stat-box"><div class="stat-num">98%</div><div class="stat-lbl">Board Pass Rate</div></div>
+      <div class="stat-box"><div class="stat-num">10+</div><div class="stat-lbl">Years Experience</div></div>
+      <div class="stat-box"><div class="stat-num">4.9★</div><div class="stat-lbl">Student Rating</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CLASS WISE -->
+<section class="section" style="background:var(--dark)">
+  <div class="container">
+    <div class="reveal"><div class="sec-title">📚 Class-wise Programme Overview</div><div class="sec-sub">Tailored approach for every stage of the student's journey</div></div>
+    <div class="class-timeline reveal">
+      <div class="class-card">
+        <div class="class-badge">Class 6 – 8</div>
+        <div class="class-name">🌱 Foundation Stage</div>
+        <div class="class-desc">Building curiosity and strong basics. Making students fall in love with Science &amp; Maths through interactive, concept-first sessions.</div>
+        <div class="class-subj">
+          <span class="cs">Mathematics</span><span class="cs">Science (Integrated)</span><span class="cs">CBSE</span><span class="cs">ICSE</span>
+        </div>
+      </div>
+      <div class="class-card">
+        <div class="class-badge">Class 9 – 10</div>
+        <div class="class-name">🎯 Board Prep Stage</div>
+        <div class="class-desc">Serious board exam preparation with subject split into Physics, Chemistry, Biology &amp; Maths. School score improvement is the primary goal.</div>
+        <div class="class-subj">
+          <span class="cs">Mathematics</span><span class="cs">Physics</span><span class="cs">Chemistry</span><span class="cs">Biology</span>
+        </div>
+      </div>
+      <div class="class-card">
+        <div class="class-badge">Class 11 – 12</div>
+        <div class="class-name">🚀 Senior Stage</div>
+        <div class="class-desc">Deep subject coverage for both boards AND competitive exams. School board + JEE/NEET foundation built simultaneously.</div>
+        <div class="class-subj">
+          <span class="cs">Physics</span><span class="cs">Chemistry</span><span class="cs">Mathematics</span><span class="cs">Biology</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBJECT DETAILS -->
+<section class="section">
+  <div class="container">
+    <div class="reveal"><div class="sec-title">🔬 Subjects We Teach</div><div class="sec-sub">Class 6 to 12 — complete coverage of Science &amp; Mathematics</div></div>
+    <div class="subj-row reveal">
+      <div class="subj-box">
+        <div class="subj-icon">📐</div>
+        <div class="subj-title">Mathematics</div>
+        <ul class="subj-topics">
+          <li>Class 6–8: Numbers, Algebra, Geometry, Mensuration</li>
+          <li>Class 9–10: Quadratics, Triangles, Circles, Statistics</li>
+          <li>Class 11–12: Calculus, Vectors, Probability, Conic Sections</li>
+          <li>Daily practice with NCERT + Extra questions</li>
+          <li>Board exam paper solving strategy</li>
+        </ul>
+      </div>
+      <div class="subj-box">
+        <div class="subj-icon">🔬</div>
+        <div class="subj-title">Science / Physics</div>
+        <ul class="subj-topics">
+          <li>Class 6–8: Motion, Force, Light, Sound, Electricity basics</li>
+          <li>Class 9–10: Mechanics, Work, Electricity, Optics</li>
+          <li>Class 11–12: Full NCERT + JEE/NEET level Physics</li>
+          <li>Numerical problems made easy with concept clarity</li>
+        </ul>
+      </div>
+      <div class="subj-box">
+        <div class="subj-icon">🧪</div>
+        <div class="subj-title">Chemistry</div>
+        <ul class="subj-topics">
+          <li>Class 8–10: Elements, Compounds, Acids-Bases, Metals</li>
+          <li>Class 11–12: Physical, Inorganic, Organic Chemistry</li>
+          <li>Chemical equations, balancing &amp; reaction mechanisms</li>
+          <li>NCERT + board question bank practice</li>
+        </ul>
+      </div>
+      <div class="subj-box">
+        <div class="subj-icon">🧬</div>
+        <div class="subj-title">Biology</div>
+        <ul class="subj-topics">
+          <li>Class 6–8: Living World, Cell, Nutrition, Reproduction</li>
+          <li>Class 9–10: Life Processes, Control, Heredity, Ecosystem</li>
+          <li>Class 11–12: Full NCERT Biology (NEET level)</li>
+          <li>Diagram practice + NCERT questions bank</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section class="section" style="background:var(--dark)">
+  <div class="container">
+    <div class="reveal"><div class="sec-title">👨‍🏫 Your Teachers</div><div class="sec-sub">Dedicated faculty for Class 6–12 — patient, experienced &amp; results-driven</div></div>
+    <div class="fac-grid reveal">
+      <div class="fac-card">
+        <img src="manish-mishra.jpg" alt="Manish Mishra" class="fac-av" onerror="this.src='https://ui-avatars.com/api/?name=Manish+Mishra&background=F5A200&color=000&size=80'">
+        <div><div class="fac-name">Manish Mishra</div><div class="fac-role">Mathematics — Class 6 to 12</div><div class="fac-meta">🎓 Ex-Aakash Institute · 10+ yrs</div><div class="fac-tags"><span class="fac-tag">CBSE</span><span class="fac-tag">ICSE</span><span class="fac-tag">JEE Maths</span></div></div>
+      </div>
+      <div class="fac-card">
+        <img src="madhvi-rai.jpg" alt="Madhvi Rai" class="fac-av" onerror="this.src='https://ui-avatars.com/api/?name=Madhvi+Rai&background=3D7A6A&color=fff&size=80'">
+        <div><div class="fac-name">Madhvi Rai</div><div class="fac-role">Science — Class 6 to 12</div><div class="fac-meta">🎓 Ex-Aakash Institute · 11+ yrs</div><div class="fac-tags"><span class="fac-tag">CBSE</span><span class="fac-tag">ICSE</span><span class="fac-tag">NEET</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal"><div class="sec-title">✅ What's Included</div><div class="sec-sub">A complete learning ecosystem from Class 6 to 12</div></div>
+    <div class="feat-list-grid reveal">
+      <div class="feat-item"><div class="feat-icon">🔴</div><div><div class="feat-item-title">Live 1-on-1 Classes</div><div class="feat-item-desc">Dedicated teacher per student — full attention, no distractions</div></div></div>
+      <div class="feat-item"><div class="feat-icon">📝</div><div><div class="feat-item-title">Chapter-wise Notes</div><div class="feat-item-desc">Crisp notes after every chapter for fast revision</div></div></div>
+      <div class="feat-item"><div class="feat-icon">📊</div><div><div class="feat-item-title">Daily Practice (DPQs)</div><div class="feat-item-desc">Consistent daily questions to build exam readiness</div></div></div>
+      <div class="feat-item"><div class="feat-icon">🏫</div><div><div class="feat-item-title">School Syllabus Alignment</div><div class="feat-item-desc">Teaching stays in sync with school schedule &amp; board pattern</div></div></div>
+      <div class="feat-item"><div class="feat-icon">❓</div><div><div class="feat-item-title">Doubt Clearing Sessions</div><div class="feat-item-desc">LIVE doubt sessions after every chapter — zero gaps</div></div></div>
+      <div class="feat-item"><div class="feat-icon">📞</div><div><div class="feat-item-title">Parent PTMs &amp; Reports</div><div class="feat-item-desc">Fortnightly progress reports &amp; monthly parent-teacher meetings</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--dark)">
+  <div class="container reveal">
+    <div class="sec-title">🔗 Explore Other Programmes</div>
+    <div class="sec-sub" style="margin-bottom:20px">All courses at M² Learning Hub</div>
+    <div class="courses-row">
+      <a href="cbse.html" class="course-chip">CBSE</a>
+      <a href="icse.html" class="course-chip">ICSE</a>
+      <a href="jee.html" class="course-chip">IIT JEE</a>
+      <a href="neet.html" class="course-chip">NEET</a>
+      <span class="course-chip active">Class 6–12 Foundation</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 80px">
+  <div class="container">
+    <div class="cta-strip reveal">
+      <div><h2>Give your child the <span class="gold">best start</span></h2><p>Book a FREE demo class today — meet the teacher, experience the difference.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+        <a href="index.html#enroll" class="btn-gold" style="font-size:15px;padding:14px 30px">Book Free Demo →</a>
+        <span style="font-size:13px;color:rgba(255,255,255,.4)">📞 <a href="tel:+918107563723" style="color:var(--gold);font-weight:600">+91 8107563723</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container"><p>© 2025 <span class="gold">M² Learning Hub</span>. All rights reserved.</p></div></footer>
+<script>
+  const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
